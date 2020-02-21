@@ -567,6 +567,12 @@ export class WKNavigationDelegateNotaImpl extends NSObject implements WKNavigati
             return;
         }
 
+        if (!navigationAction.targetFrame) {
+            webView.load(navigationAction.request)
+            
+            return;
+        }
+
         const request = navigationAction.request;
         const httpMethod = request.HTTPMethod;
         const url = request.URL && request.URL.absoluteString;
